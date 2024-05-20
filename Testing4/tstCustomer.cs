@@ -22,9 +22,9 @@ namespace Testing4
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            TheCustomer.Active = TestData;
+            TheCustomer.Newsletter = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(TheCustomer.Active, TestData);
+            Assert.AreEqual(TheCustomer.Newsletter, TestData);
         }
 
         [TestMethod]
