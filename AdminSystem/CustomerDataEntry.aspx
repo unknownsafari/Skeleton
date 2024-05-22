@@ -18,8 +18,8 @@
         <asp:TextBox ID="txtLastName" runat="server" style="z-index: 1; left: 191px; top: 67px; position: absolute; width: 183px;"></asp:TextBox>
         <asp:Label ID="lblEmailAddress" runat="server" style="z-index: 1; left: 10px; top: 94px; position: absolute" Text="Email Address" width="145px"></asp:Label>
         <asp:TextBox ID="txtEmailAddress" runat="server" style="z-index: 1; left: 190px; top: 93px; position: absolute; width: 183px;"></asp:TextBox>
-        <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 10px; top: 119px; position: absolute" Text="Password" width="145px"></asp:Label>
-        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 189px; top: 119px; position: absolute; width: 183px;"></asp:TextBox>
+        <asp:Label ID="lblPhoneNumber" runat="server" style="z-index: 1; left: 10px; top: 119px; position: absolute; right: 1330px;" Text="Phone Number" width="145px"></asp:Label>
+        <asp:TextBox ID="txtPhoneNumber" runat="server" style="z-index: 1; left: 189px; top: 119px; position: absolute; width: 183px;"></asp:TextBox>
         <asp:Label ID="lblDateOfBirth" runat="server" style="z-index: 1; left: 10px; top: 144px; position: absolute" Text="Date of Birth" width="145px"></asp:Label>
         <asp:TextBox ID="txtDateOfBirth" runat="server" style="z-index: 1; left: 188px; top: 144px; position: absolute; width: 183px;"></asp:TextBox>
         <asp:Label ID="lblNewsletter" runat="server" style="z-index: 1; left: 10px; top: 168px; position: absolute" Text="Newsletter Subscription"></asp:Label>
