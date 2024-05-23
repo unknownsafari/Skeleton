@@ -73,12 +73,12 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void PasswordPropertyOK()
+        public void PhoneNumberPropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
             string TestData = "Mzuckerberg01234#";
-            TheCustomer.Password = TestData;
-            Assert.AreEqual(TheCustomer.Password, TestData);
+            TheCustomer.PhoneNumber = TestData;
+            Assert.AreEqual(TheCustomer.PhoneNumber, TestData);
         }
     }
 

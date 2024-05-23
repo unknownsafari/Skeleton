@@ -20,8 +20,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         TheCustomer.FirstName = txtFirstName.Text;
         TheCustomer.LastName = txtLastName.Text;
         TheCustomer.EmailAddress = txtEmailAddress.Text;
+        TheCustomer.Newsletter = chkNewsletter.Checked;
+        TheCustomer.PhoneNumber = txtPhoneNumber.Text;
         TheCustomer.DateOfBirth = DateTime.Now;
-        
         
         //Store the customer in the session object
         Session["TheCustomer"] = TheCustomer;
