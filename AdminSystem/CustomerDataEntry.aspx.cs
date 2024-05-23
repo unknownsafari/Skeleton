@@ -21,12 +21,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         TheCustomer.LastName = txtLastName.Text;
         TheCustomer.EmailAddress = txtEmailAddress.Text;
         TheCustomer.Newsletter = chkNewsletter.Checked;
-        TheCustomer.PhoneNumber = txtPhoneNumber.Text;
-        TheCustomer.DateOfBirth = DateTime.Now;
-        
-        //Store the customer in the session object
-        Session["TheCustomer"] = TheCustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
+        long phoneNumber;
+        if (long.TryParse(txtPhoneNumber.Text, out phoneNumber))
+        {
+            TheCustomer.PhoneNumber = txtPhoneNumber.Text;
+        }
+        else
+        {
+            lblError.Text = "Invalid phone number. Please enter numbers only.";
+            lblError.Visible = true;
+            return;
+        }
+        DateTime dateOfBirth;
+
+        // Attempt to parse the date of birth
+        if (DateTime.TryParse(txtDateOfBirth.Text, out dateOfBirth))
+        {
+            TheCustomer.DateOfBirth = dateOfBirth;
+
+            // Store the customer in the session object
+            Session["TheCustomer"] = TheCustomer;
+
+            // Navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            // Display an error message if the date is not valid
+            lblError.Text = "Invalid date format. Please enter the date in yyyy-mm-dd format.";
+            lblError.Visible = true;
+        }
     }
 }
