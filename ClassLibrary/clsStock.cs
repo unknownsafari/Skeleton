@@ -9,5 +9,6 @@
         public string ProductName { get; set; }
         public int MinimumRecorderLEvel { get; set; }
         public decimal UnitPrice { get; set; }
+        public string LimitedEdition { get; set; }
     }
 }
