@@ -170,5 +170,25 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string productName, string minimumRecorderLevel, string unitPrice, string currentStockLevel, string platform, string publisher)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the ProductName is blank 
+            if (productName.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The product name may not be blank : ";
+            }
+            //if the product name is greater than 50 characters
+            if (productName.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The product name must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }
