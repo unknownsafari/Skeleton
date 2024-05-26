@@ -139,7 +139,7 @@ namespace ClassLibrary
         }
         /***************** FIND METHOD *********************/
 
-        public bool Find(int productID)
+        public bool Find(int ProductID)
         {
             //set the private data members to the test data value
             mProductId = 505;
