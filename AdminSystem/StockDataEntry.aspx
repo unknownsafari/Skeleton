@@ -10,29 +10,29 @@
    &nbsp;<form id ="form1" runat="server">
        <div>   
            <asp:Label runat="server" Text="Product ID" ID="lblProductId" width="210px"></asp:Label>     
-           <asp:TextBox runat="server" ID="txtProductID" width="128px"></asp:TextBox>
+           <asp:TextBox runat="server" ID="txtProductID" width="188px"></asp:TextBox>
        </div>
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Product Name" ID="lblProductName" width="210px"></asp:Label>     
-           <asp:TextBox runat="server" ID="txtProductName" width="128px"></asp:TextBox>&nbsp;</div>
+           <asp:TextBox runat="server" ID="txtProductName" width="188px"></asp:TextBox>&nbsp;</div>
        <div>&nbsp;</div>
        <div><asp:Label runat="server" Text="Current Stock Level" ID="lblCurrentStockLevel" Height="21px" width="127px"></asp:Label>                      
-           <asp:TextBox runat="server" ID="txtCurrentStockLevel" style="margin-left: 87px" width="128px"></asp:TextBox></div>
+           <asp:TextBox runat="server" ID="txtCurrentStockLevel" style="margin-left: 87px" width="188px"></asp:TextBox></div>
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Unit Price" ID="lblUnitPrice" width="210px"></asp:Label>
-           <asp:TextBox runat="server" ID="txtUnitPrice" width="128px"></asp:TextBox>&nbsp;</div>
+           <asp:TextBox runat="server" ID="txtUnitPrice" width="188px"></asp:TextBox>&nbsp;</div>
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Minimum Recorder Level" ID="lblMinimumRecorder" width="210px"></asp:Label>
            <asp:TextBox runat="server" ID="txtMinimumRecorder"></asp:TextBox>&nbsp;</div>
        <div>&nbsp;</div>
        <div>
-           <asp:Label runat="server" Text="Platform" ID="lblPlatform" width="210px"></asp:Label>&nbsp;<asp:TextBox runat="server" ID="txtPlatform" width="128px"></asp:TextBox></div>
+           <asp:Label runat="server" Text="Platform" ID="lblPlatform" width="210px"></asp:Label>&nbsp;<asp:TextBox runat="server" ID="txtPlatform" width="188px"></asp:TextBox></div>
        <div>&nbsp;</div>
        <div>
-           <asp:Label runat="server" Text="Publisher" ID="lblPublisher" width="210px"></asp:Label>&nbsp;<asp:TextBox runat="server" ID="txtPublisher" width="128px"></asp:TextBox></div>
+           <asp:Label runat="server" Text="Publisher" ID="lblPublisher" width="210px"></asp:Label>&nbsp;<asp:TextBox runat="server" ID="txtPublisher" width="188px"></asp:TextBox></div>
        <div>&nbsp;</div>
        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:CheckBox runat="server" ID="chkActive" Text="Limited Edition"></asp:CheckBox></div>
        <div>&nbsp;</div>
