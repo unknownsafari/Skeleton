@@ -141,17 +141,34 @@ namespace ClassLibrary
 
         public bool Find(int ProductID)
         {
-            //set the private data members to the test data value
-            mProductId = 505;
-            mCurrentStockLevel = 1490;
-            mPublisher = "Ubisoft";
-            mPlatform = "XBOX";
-            mProductName = "Far Cry 4";
-            mMinimumRecorderLEvel = 250;
-            mUnitPrice = 10.95m;
-            mLimitedEdition = "YES"; 
-            //always return true
-            return true;
+            //create an instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+            // add the parameter for the product id to search for
+            DB.AddParameter("@ProductId", ProductID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblProduct_FilterByProductId");
+            //if one record is found (ther should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mCurrentStockLevel = Convert.ToInt32(DB.DataTable.Rows[0]["CurrentStockLevel"]);
+                mPublisher = Convert.ToString(DB.DataTable.Rows[0]["Publisher"]);
+                mPlatform = Convert.ToString(DB.DataTable.Rows[0]["Platform"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mMinimumRecorderLEvel = Convert.ToInt32(DB.DataTable.Rows[0]["MinimumRecorderLEvel"]);
+                mUnitPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["UnitPrice"]);
+                //mLimitedEdition = Convert.ToString(DB.DataTable.Rows[0]["LimitedEdition"]);
+                //return that everything worked OK
+                return true;
+            }
+            // if no record was found 
+            else
+            {
+
+                //return false indicating there is a problem 
+                return false;
+            }
         }
     }
 }
