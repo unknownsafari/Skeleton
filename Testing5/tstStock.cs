@@ -192,7 +192,7 @@ namespace Testing5
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.UnitPrice != 10.99m)
+            if (AStock.UnitPrice != 10.95m)
             {
                 OK = false;
             }

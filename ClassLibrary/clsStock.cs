@@ -148,7 +148,7 @@ namespace ClassLibrary
             mPlatform = "XBOX";
             mProductName = "Far Cry 4";
             mMinimumRecorderLEvel = 250;
-            mUnitPrice = 10.99m;
+            mUnitPrice = 10.95m;
             mLimitedEdition = "YES"; 
             //always return true
             return true;
