@@ -28,26 +28,50 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
-        //capture the product id
-        AStock.ProductId = Convert.ToInt32(txtProductID.Text);
-        //add the product name
-        AStock.ProductName = txtProductName.Text;
-        //show the current stock level
-        AStock.CurrentStockLevel = Convert.ToInt32(txtCurrentStockLevel.Text);
-        //add the unit price
-        AStock.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
-        //add minimum recorder level
-        AStock.MinimumRecorderLEvel = Convert.ToInt32(txtMinimumRecorder.Text);
-        //add platform of the product
-        AStock.Platform = txtPlatform.Text;
-        //add publisher of the product
-        AStock.Publisher = txtPublisher.Text;
-        //capture Limited edition check box
-        AStock.LimitedEdition = chkActive.Checked ? "Yes" : "No";
-        //store the name in the session object
-        Session["AStock"] = AStock;
-        //navigate to the view page
-        Response.Redirect("StockViewer.aspx");
+        //capture the product name 
+        string ProductName = txtProductName.Text;
+        //capture the unit price 
+        string UnitPrice = txtUnitPrice.Text;
+        //capture the platform
+        string Platform = txtPlatform.Text;
+        //capture the publisher 
+        string Publisher = txtPublisher.Text;
+        //capture minimum recorder level
+        string MinimumRecorderLevel = txtMinimumRecorder.Text;
+        //capture the current stock level
+        string CurrentStockLevel = txtCurrentStockLevel.Text;
+        //capture limited edition checkbox
+        string LimitedEdition = chkActive.Text;
+        //variable to store any error message 
+        string Error = "";
+        //validate the data 
+        Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, Platform, Publisher, CurrentStockLevel);
+        if (Error == "")
+        {
+            //add the product name
+            AStock.ProductName = txtProductName.Text;
+            //show the current stock level
+            AStock.CurrentStockLevel = Convert.ToInt32(txtCurrentStockLevel.Text);
+            //add the unit price
+            AStock.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
+            //add minimum recorder level
+            AStock.MinimumRecorderLEvel = Convert.ToInt32(txtMinimumRecorder.Text);
+            //add platform of the product
+            AStock.Platform = txtPlatform.Text;
+            //add publisher of the product
+            AStock.Publisher = txtPublisher.Text;
+            //capture Limited edition check box
+            AStock.LimitedEdition = chkActive.Checked ? "Yes" : "No";
+            //store the name in the session object
+            Session["AStock"] = AStock;
+            //navigate to the view page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error messsage 
+            lblError.Text = Error;
+        }
     }
 
 
