@@ -109,7 +109,7 @@ namespace Testing5
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method 
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //involve the method
             Found = AStock.Find(ProductId);
             //test to see if the result is true
@@ -125,11 +125,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.ProductId != 505)
+            if (AStock.ProductId != 23)
             {
                 OK = false;
             }
@@ -146,11 +146,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product name
-            if (AStock.ProductName != "Far Cry 4")
+            if (AStock.ProductName != "Minecraft")
             {
                 OK = false;
             }
@@ -167,11 +167,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.CurrentStockLevel != 1490)
+            if (AStock.CurrentStockLevel != 2500)
             {
                 OK = false;
             }
@@ -188,11 +188,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.UnitPrice != 10.99m)
+            if (AStock.UnitPrice != 8.99m)
             {
                 OK = false;
             }
@@ -209,11 +209,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.MinimumRecorderLEvel != 250)
+            if (AStock.MinimumRecorderLEvel != 1500)
             {
                 OK = false;
             }
@@ -230,11 +230,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.Platform != "XBOX")
+            if (AStock.Platform != "PC")
             {
                 OK = false;
             }
@@ -251,11 +251,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 505;
+            Int32 ProductId = 23;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the product id
-            if (AStock.Publisher != "Ubisoft")
+            if (AStock.Publisher != "Mojang Studios")
             {
                 OK = false;
             }
