@@ -7,9 +7,15 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+     &nbsp;<form id="form1" runat="server">
         <div>
+         <asp:ListBox runat="server" ID="lstStockList" OnSelectedIndexChanged="lstStockList_SelectedIndexChanged"></asp:ListBox>
+       
+               
         </div>
+         <div>&nbsp;</div>
+         <div>
+             <asp:Button runat="server" Text="Add" ID="btnAdd" OnClick="btnAdd_Click"></asp:Button>&nbsp;</div>
     </form>
 </body>
 </html>

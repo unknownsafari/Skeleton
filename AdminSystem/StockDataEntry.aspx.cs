@@ -62,10 +62,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.Publisher = txtPublisher.Text;
             //capture Limited edition check box
             AStock.LimitedEdition = chkActive.Checked ? "Yes" : "No";
-            //store the name in the session object
-            Session["AStock"] = AStock;
-            //navigate to the view page
-            Response.Redirect("StockViewer.aspx");
+            //create a new instance of the address collection 
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisStock property
+            StockList.ThisStock = AStock;
+            //add the new record
+            StockList.Add();
+            //redirect back to the list page
+            Response.Redirect("StockList.aspx");
         }
         else
         {
