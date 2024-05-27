@@ -116,5 +116,45 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties
+            TestItem.ProductName = "Minecraft";
+            TestItem.UnitPrice = 8.99m;
+            TestItem.CurrentStockLevel = 2500;
+            TestItem.Publisher = "Mojang Studios";
+            TestItem.Platform = "PC";
+            TestItem.MinimumRecorderLEvel = 1500;
+            TestItem.LimitedEdition = "Yes";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data
+            TestItem.ProductId = PrimaryKey;
+            //modify the test record
+            TestItem.ProductName = "Gta 4";
+            TestItem.UnitPrice = 5.99m;
+            TestItem.CurrentStockLevel = 900;
+            TestItem.Publisher = "Rock Studios";
+            TestItem.Platform = "XBOX";
+            TestItem.MinimumRecorderLEvel = 500;
+            TestItem.LimitedEdition = "No";
+            //set the record based on the new test data
+            AllStock.ThisStock = TestItem;
+            //update the record
+            AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test ti see if ThisStock matches the test data
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
     }
 }
