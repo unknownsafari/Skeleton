@@ -23,7 +23,7 @@
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Unit Price" ID="lblUnitPrice" width="210px"></asp:Label>
-           <asp:TextBox runat="server" ID="txtUnitPrice" width="188px"></asp:TextBox>&nbsp;</div>
+           <asp:TextBox runat="server" ID="txtUnitPrice" Width="188px" OnTextChanged="txtUnitPrice_TextChanged"></asp:TextBox>&nbsp;</div>
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Minimum Recorder Level" ID="lblMinimumRecorder" width="210px"></asp:Label>
