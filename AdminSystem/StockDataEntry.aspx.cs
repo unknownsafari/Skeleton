@@ -68,7 +68,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string MinimumRecorderLevel = txtMinimumRecorder.Text;
         //capture the current stock level
         string CurrentStockLevel = txtCurrentStockLevel.Text;
-        //capture limited edition checkbox
+         //capture limited edition checkbox
         string LimitedEdition = chkActive.Text;
         //variable to store any error message 
         string Error = "";
@@ -147,5 +147,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtProductName.Text = AStock.ProductName;
             txtUnitPrice.Text = AStock.UnitPrice.ToString();
         }
+    }
+
+    protected void txtUnitPrice_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }

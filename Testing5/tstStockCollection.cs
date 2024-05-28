@@ -156,5 +156,90 @@ namespace Testing5
             //test ti see if ThisStock matches the test data
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsStockCollection AllStock = new clsStockCollection();
+            //create the item of test data 
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key 
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductId = 23;
+            TestItem.ProductName = "Minecraft";
+            TestItem.UnitPrice = 8.99m;
+            TestItem.CurrentStockLevel = 2500;
+            TestItem.Publisher = "Mojang Studios";
+            TestItem.Platform = "PC";
+            TestItem.MinimumRecorderLEvel = 1500;
+            TestItem.LimitedEdition = "Yes";
+            //set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            //add the record 
+            PrimaryKey = AllStock.Add();
+            //set the primary key of the test data 
+            TestItem.ProductId = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //delete the record 
+            AllStock.Delete();
+            //now find the record 
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey); 
+            //test to see that the record was not found 
+            Assert.IsFalse( Found );
+        }
+        [TestMethod]
+        public void ReportByPublisherMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all records);
+            FilteredStocks.ReportByPublisher("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count );
+        }
+        [TestMethod]
+        public void ReportByPublisherNoneFound()
+        {
+            //create an instance of the class we want create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a post code that doesn't exist
+            FilteredStocks.ReportByPublisher("xxxxxxxxxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+        [TestMethod]
+        public void ReportByPublisherTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome 
+            Boolean OK = true;
+            //apply a publisher that doesn't exist
+            FilteredStocks.ReportByPublisher("Sony");
+            //check that the correct number of records are found
+            if (FilteredStocks.Count == 2)
+            {
+                //check to set that the first record is 50
+                if (FilteredStocks.StockList[0].ProductId != 44)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 51
+                if (FilteredStocks.StockList[1].ProductId != 45)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }

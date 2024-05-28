@@ -7,9 +7,15 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    &nbsp;<form id="form1" runat="server">
         <div>
+            <asp:Label runat="server" Text="Are you sure you want to delete this record?" ID="lblStockDelete"></asp:Label>
         </div>
+        <div>&nbsp;</div>
+        <div>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:Button runat="server" Text="Yes" ID="btnYes" OnClick="btnYes_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button runat="server" Text="No" ID="btnNo" OnClick="btnNo_Click"></asp:Button>&nbsp;</div>
+        <div>&nbsp;</div>
     </form>
 </body>
 </html>

@@ -54,19 +54,29 @@ namespace ClassLibrary
         //constructor for the class 
         public clsStockCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the daa connect
+            //object for the data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblStock_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
             //get the count of records to process 
+            RecordCount = DB.Count;
+            //clear the private array list 
+            mStockList = new List<clsStock>(RecordCount);
+            //while there are records to process 
             while (Index < RecordCount)
             {
                 //create a blank stock 
-                clsStock AStock =new clsStock();
+                clsStock AStock = new clsStock();
                 //read in the fields for the current record
                 AStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
                 AStock.ProductId = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductId"]);
@@ -75,7 +85,7 @@ namespace ClassLibrary
                 AStock.UnitPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["UnitPrice"]);
                 AStock.CurrentStockLevel = Convert.ToInt32(DB.DataTable.Rows[Index]["CurrentStockLevel"]);
                 AStock.MinimumRecorderLEvel = Convert.ToInt32(DB.DataTable.Rows[Index]["MinimumRecorderLEvel"]);
-                AStock.LimitedEdition = Convert.ToString(DB.DataTable.Rows[Index]["LimitedEdition"]);
+                // AStock.LimitedEdition = Convert.ToString(DB.DataTable.Rows[Index]["LimitedEdition"]);
                 //add the record to the privare data member
                 mStockList.Add(AStock);
                 //point at the next record
@@ -115,6 +125,30 @@ namespace ClassLibrary
             DB.AddParameter("@Publisher", mThisStock.Publisher);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@ProductId", mThisStock.ProductId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportByPublisher(string Publisher)
+        {
+            //filters the records based on a full or partial post code
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the publisher parameter to the database
+            DB.AddParameter("@Publisher", Publisher);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByPublisher");
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
     }
 }
