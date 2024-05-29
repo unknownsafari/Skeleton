@@ -23,7 +23,7 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button runat="server" Text="Login" ID="btnLogin" OnClick="btnLogin_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
-            <asp:Button runat="server" Text="Cancel" ID="btnCancel"></asp:Button></div>
+            <asp:Button runat="server" Text="Cancel" ID="btnCancel" OnClick="btnCancel_Click"></asp:Button></div>
         <div>&nbsp;</div>
         <div>&nbsp;<asp:Label runat="server" ID="lblError" ForeColor="#FF3300"></asp:Label></div>
         <div>&nbsp;</div>
