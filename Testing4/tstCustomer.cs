@@ -76,10 +76,139 @@ namespace Testing4
         public void PhoneNumberPropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            string TestData = "Mzuckerberg01234#";
+            string TestData = "88288828282";
             TheCustomer.PhoneNumber = TestData;
             Assert.AreEqual(TheCustomer.PhoneNumber, TestData);
         }
+
+        [TestMethod]    
+        public void FindMethod()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.CustomerId != 1)
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestDateOfBirthFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.DateOfBirth != Convert.ToDateTime("2000, 2, 21"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestFirstNameFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.FirstName != "Mark")
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestLastNameFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.LastName != "Zuckerberg")
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestEmailAddressFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.EmailAddress != "markzuckerberg@gmail.com")
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestPhoneNumberFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found = TheCustomer.Find(CustomerId);
+            if (TheCustomer.PhoneNumber != "88288828282")
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestNewsletterFound()
+        {
+            clsCustomer TheCustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerId = 1;
+            Found= TheCustomer.Find(CustomerId);
+            if (TheCustomer.Newsletter != true)
+            {
+                OK = false;
+
+            }
+            Assert.IsTrue(OK);
+        }
     }
+
+
 
 }
