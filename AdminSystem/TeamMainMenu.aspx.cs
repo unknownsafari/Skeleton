@@ -11,4 +11,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnStock_Click(object sender, EventArgs e)
+    {
+        //redirect the user to the stock login page
+        Response.Redirect("StockLogin.aspx");
+    }
 }
