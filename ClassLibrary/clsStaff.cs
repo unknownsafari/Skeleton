@@ -1,10 +1,11 @@
 ﻿using System;
+using System.IO;
 namespace ClassLibrary
 {
     public class clsStaff
     {
         //private data member for the Staff id property
-        private Int32 mStaffId;
+        private int mStaffId;
         //StaffId public property
         public int StaffId
         {
@@ -116,6 +117,8 @@ namespace ClassLibrary
         }
         //private data member for the active property
         private Boolean mActive;
+        private DateTime DateTemp;
+
         //active public property
         public bool Active
         {
@@ -154,6 +157,88 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+        public string Valid(string HouseNo, string Street,string Town,string Postcode,string DateAdded)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (HouseNo.Length == 0) 
+            {
+                Error = Error + "The house number not be blank:";
+            }
+            if (HouseNo.Length>6)
+            {
+                Error = Error + "The house no must be less than 6 characters :";
+            }
+            DateTemp = Convert.ToDateTime(DateAdded);
+            if(DateTemp<DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past :";
+            }
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < DateComp) //compare dateAdded with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //is the post code blank
+            if (PostCode.Length == 0)
+            {
+                //record the error
+                Error = Error + "The post code may not be blank : ";
+            }
+            //if the post code is too long
+            if (PostCode.Length > 9)
+            {
+                //record the error
+                Error = Error + "The post code must be less than 9 characters : ";
+            }
+            //is the street blank
+            if (Street.Length == 0)
+            {
+                //record the error
+                Error = Error + "The street may not be blank : ";
+            }
+            //if the street is too long
+            if (Street.Length > 50)
+            {
+                //record the error
+                Error = Error + "The street must be less than 50 characters : ";
+            }
+            //is the town blank
+            if (Town.Length == 0)
+            {
+                //record the error
+                Error = Error + "The town may not be blank : ";
+            }
+            //if the town is too long
+            if (Town.Length > 50)
+            {
+                //record the error
+                Error = Error + "The town must be less than 50 characters : ";
+            }
+            return Error;
         }
     }
 }

@@ -21,9 +21,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AnStaff= new clsStaff();
-        AnStaff.HouseNo = txtHouseNo.Text;
-        Session["Anaddress"] = AnStaff;
-        Response.Redirect("StaffBookViewer.aspx");
+        //create a new instance of clsstaff
+        string HouseNo = txtHouseNo.Text;
+        string Street = txtStreet.Text;
+        string Town = txtTown.Text;
+        string PostCode =txtPS.Text;
+        string CountyCode = txtCounty.Text;
+        string DateAdded = txtDate.Text;
+        string Active = chkActive.Text;
+        string Error = "";
+        Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+        if (Error == "")
+        {
+            AnStaff.HouseNo = HouseNo;
+            AnStaff.Street = Street;
+            AnStaff.Town = Town;
+            AnStaff.PostCode = PostCode;
+            AnStaff.DateAdded = Convert.ToDateTime(DateAdded);
+            Session["Anaddress"] = AnStaff;
+            Response.Redirect("StaffBookViewer.aspx");
+        }
+        else 
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

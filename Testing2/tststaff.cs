@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace Testing2
 {
@@ -8,7 +9,11 @@ namespace Testing2
     public class tststaff
     {
         private bool OK;
-
+        string HouseNo = "12b";
+        string Street = "some street";
+        string Town = "Leicester";
+        string PostCode = "LE2 7DN";
+        string DateAdded = DateTime.Now.ToShortDateString();
         [TestMethod]
         public void InstanceOK()
         {
@@ -104,7 +109,7 @@ namespace Testing2
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
-            ClassLibrary.clsStaff AnStaff = new ClassLibrary.clsStaff();
+            clsStaff AnStaff = new clsStaff();
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
@@ -112,10 +117,6 @@ namespace Testing2
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //test to see if the result is true
-            if(AnStaff.DateAdded !=Convert.ToDateTime("23/12/2022"))
-            {
-                OK = false;
-            }
             Assert.IsTrue(Found);
         }
         [TestMethod]
@@ -244,9 +245,485 @@ namespace Testing2
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void HouseNoMinLessOne()
+        {
+            clsStaff Anstaff = new clsStaff();
+            String Error = "";
+            string HouseNo = "";
+            Error = Anstaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "a"; //this should be ok
+                                  //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "aa"; //this should be ok
+                                   //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "aaaaa"; //this should be ok
+                                      //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "aaaaaa"; //this should be ok
+                                       //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "aaa"; //this should be ok
+                                    //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void HouseNoMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string HouseNo = "aaa"; //this should be ok
+                                    //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void PostCodeMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string PostCode = "a";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PostCodeMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string PostCode = "aa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PostCodeMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnAddress = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string PostCode = "aaaaaaaa";
+            //invoke the method
+            Error = AnAddress.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PostCodeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string PostCode = "aaaaaaaaa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PostCodeMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string PostCode = "aaaaaaaaaa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PostCodeMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string PostCode = "aaaa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Street = "";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Street = "a";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Street = "aa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Street = "";
+            Street = Street.PadRight(49, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Street = "";
+            Street = Street.PadRight(50, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Street = "";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StreetMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Street = "";
+            Street = Street.PadRight(25, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Town = "";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Town = "a";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Town = "aa";
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Town = "";
+            Town = Town.PadRight(49, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Town = "";
+            Town = Town.PadRight(50, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
 
-
-
+        }
+        [TestMethod]
+        public void TownMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this shold fail
+            string Town = "";
+            Town = Town.PadRight(51, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void TownMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff AnStaff = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Town = "";
+            Town = Town.PadRight(25, 'a');
+            //invoke the method
+            Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
     }
 }
