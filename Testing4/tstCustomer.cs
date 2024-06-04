@@ -8,6 +8,13 @@ namespace Testing4
     [TestClass]
     public class tstCustomer
     {
+        //good test data
+        //create some test data to pass the method
+        String FirstName = "Nikhil";
+        String LastName = "Kumar";
+        String EmailAddress = "NikhilKumar@gmail.com";
+        String DateOfBirth = new DateTime(1999, 03, 05).ToShortDateString();
+        String PhoneNumber = "62626262";
 
       
         [TestMethod]
@@ -211,7 +218,37 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
 
-       
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomer TheCustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = TheCustomer.Valid(FirstName, LastName, EmailAddress, DateOfBirth, PhoneNumber);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+
+        public void FirstNameNoMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer TheCustomer = new clsCustomer();
+            //string c = variable to store any error message 
+            String Error = "";
+            //create some test data to pass the method 
+            String FirstName = "";
+            //invoke the mehthod 
+            Error = TheCustomer.Valid(FirstName, LastName, EmailAddress, DateOfBirth, PhoneNumber);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
     }
 
 
