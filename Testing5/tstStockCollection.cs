@@ -219,17 +219,17 @@ namespace Testing5
             //variable to store the outcome 
             Boolean OK = true;
             //apply a publisher that doesn't exist
-            FilteredStocks.ReportByPublisher("Sony");
+            FilteredStocks.ReportByPublisher("ROCKSTAR GAMES");
             //check that the correct number of records are found
             if (FilteredStocks.Count == 2)
             {
                 //check to set that the first record is 50
-                if (FilteredStocks.StockList[0].ProductId != 44)
+                if (FilteredStocks.StockList[0].ProductId != 18)
                 {
                     OK = false;
                 }
                 //check to see that the first record is 51
-                if (FilteredStocks.StockList[1].ProductId != 45)
+                if (FilteredStocks.StockList[1].ProductId != 28)
                 {
                     OK = false;
                 }
