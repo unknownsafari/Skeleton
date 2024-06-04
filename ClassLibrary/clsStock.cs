@@ -187,6 +187,18 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The product name must be less than 50 characters : ";
             }
+            //if the platform is blank
+            if (platform.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The platform may not be blank :";
+            }
+            //if the platform is greater than 20 characters
+            if (platform.Length > 20)
+            {
+                //record the error 
+                Error = Error + "The platform must be less than 20 characters :";
+            }
             //return any error messages
             return Error;
         }
