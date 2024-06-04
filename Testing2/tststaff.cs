@@ -48,9 +48,9 @@ namespace Testing2
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AnStaff.StaffID = TestData;
+            AnStaff.StaffId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnStaff.StaffID, TestData);
+            Assert.AreEqual(AnStaff.StaffId, TestData);
         }
         [TestMethod]
         public void CountyCodePropertyOK()
@@ -132,7 +132,7 @@ namespace Testing2
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the Staff id property
-            if (AnStaff.StaffID != 21)
+            if (AnStaff.StaffId != 21)
             {
                 OK = false;
             }
