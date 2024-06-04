@@ -52,4 +52,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Visible = true;
         }
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer class
+        clsCustomer TheCustomer = new clsCustomer();
+        //create a variable to store the primary key 
+        Int32 CustomerId;
+        //create a variable to store the result of the find operation 
+        Boolean Found = false;
+        //get the primary key entered by the user
+        CustomerId = Convert.ToInt32(txtCustomerId.Text);
+
+        //find the record
+        Found = TheCustomer.Find(CustomerId);
+        //if found
+        if(Found==true)
+        {
+            //display the value of the properties in the form
+            txtFirstName.Text = TheCustomer.FirstName;
+            txtLastName.Text = TheCustomer.LastName;
+            txtEmailAddress.Text = TheCustomer.EmailAddress;
+            txtDateOfBirth.Text = TheCustomer.DateOfBirth.ToString();
+            txtPhoneNumber.Text = TheCustomer.PhoneNumber.ToString();
+            chkNewsletter.Checked = TheCustomer.Newsletter;
+        }
+        else
+        {
+            // Display an error message if the primary key is not found
+            lblError.Text = "Customer with ID: " + CustomerId + " not found.";
+            lblError.Visible = true;
+        }
+    }
+
 }
+

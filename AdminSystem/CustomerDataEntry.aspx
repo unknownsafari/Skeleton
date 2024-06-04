@@ -21,6 +21,7 @@
         <asp:Label ID="lblPhoneNumber" runat="server" style="z-index: 1; left: 10px; top: 119px; position: absolute; right: 1330px;" Text="Phone Number" width="145px"></asp:Label>
         <asp:TextBox ID="txtPhoneNumber" runat="server" style="z-index: 1; left: 189px; top: 119px; position: absolute; width: 183px;"></asp:TextBox>
         <asp:Label ID="lblDateOfBirth" runat="server" style="z-index: 1; left: 10px; top: 144px; position: absolute" Text="Date of Birth" width="145px"></asp:Label>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 407px; top: 16px; position: absolute; width: 196px; height: 22px" Text="Find" />
         <asp:TextBox ID="txtDateOfBirth" runat="server" style="z-index: 1; left: 188px; top: 144px; position: absolute; width: 183px;"></asp:TextBox>
         <asp:Label ID="lblNewsletter" runat="server" style="z-index: 1; left: 10px; top: 168px; position: absolute" Text="Newsletter Subscription"></asp:Label>
         <asp:CheckBox ID="chkNewsletter" runat="server" style="z-index: 1; left: 184px; top: 170px; position: absolute" Text="Active" />

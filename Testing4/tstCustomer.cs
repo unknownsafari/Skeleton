@@ -1,12 +1,15 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net.Mail;
 
 namespace Testing4
 {
     [TestClass]
     public class tstCustomer
     {
+
+      
         [TestMethod]
         public void InstanceOK()
         {
@@ -31,7 +34,7 @@ namespace Testing4
         public void CustomerIdPropertyOK()
         {  
             clsCustomer TheCustomer = new clsCustomer();
-            Int32 TestData = 1;
+            Int32 TestData = 6;
             TheCustomer.CustomerId = TestData;
             Assert.AreEqual(TheCustomer.CustomerId, TestData);
         }
@@ -40,7 +43,7 @@ namespace Testing4
         public void DateOfBirthPropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            DateTime TestData = new DateTime(2000, 2, 21);
+            DateTime TestData = new DateTime(1999, 03, 05);
             TheCustomer.DateOfBirth = TestData;
             Assert.AreEqual(TheCustomer.DateOfBirth, TestData);
         }
@@ -49,7 +52,7 @@ namespace Testing4
         public void FirstNamePropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            string TestData = "Mark";
+            string TestData = "Nirmal";
             TheCustomer.FirstName = TestData;
             Assert.AreEqual(TheCustomer.FirstName, TestData);
         }
@@ -58,7 +61,7 @@ namespace Testing4
         public void LastNamePropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            string TestData = "Zuckerberg";
+            string TestData = "Nikhil";
             TheCustomer.LastName = TestData;
             Assert.AreEqual(TheCustomer.LastName, TestData);
         }
@@ -67,7 +70,7 @@ namespace Testing4
         public void EmailAddressPropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            string TestData = "markzuckerberg@gmail.com";
+            string TestData = "NirmalNikhil@gmail.com";
             TheCustomer.EmailAddress = TestData;
             Assert.AreEqual(TheCustomer.EmailAddress, TestData);
         }
@@ -76,7 +79,7 @@ namespace Testing4
         public void PhoneNumberPropertyOK()
         {
             clsCustomer TheCustomer = new clsCustomer();
-            string TestData = "88288828282";
+            string TestData = "66666666";
             TheCustomer.PhoneNumber = TestData;
             Assert.AreEqual(TheCustomer.PhoneNumber, TestData);
         }
@@ -86,7 +89,7 @@ namespace Testing4
         {
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 6;
             Found = TheCustomer.Find(CustomerId);
             Assert.IsTrue(Found);
 
@@ -98,9 +101,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.CustomerId != 1)
+            if (TheCustomer.CustomerId != 2)
             {
                 OK = false;
 
@@ -115,9 +118,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.DateOfBirth != Convert.ToDateTime("2000, 2, 21"))
+            if (TheCustomer.DateOfBirth != Convert.ToDateTime("09/03/1999"))
             {
                 OK = false;
             }
@@ -131,9 +134,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.FirstName != "Mark")
+            if (TheCustomer.FirstName != "Matthew")
             {
                 OK = false;
 
@@ -148,9 +151,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.LastName != "Zuckerberg")
+            if (TheCustomer.LastName != "Jeffery")
             {
                 OK = false;
 
@@ -165,9 +168,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.EmailAddress != "markzuckerberg@gmail.com")
+            if (TheCustomer.EmailAddress != "MatthewJef1558@gmail.com")
             {
                 OK = false;
 
@@ -182,9 +185,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.PhoneNumber != "88288828282")
+            if (TheCustomer.PhoneNumber != "66666666")
             {
                 OK = false;
 
@@ -198,15 +201,17 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 2;
             Found= TheCustomer.Find(CustomerId);
-            if (TheCustomer.Newsletter != true)
+            if (TheCustomer.Newsletter != false)
             {
                 OK = false;
 
             }
             Assert.IsTrue(OK);
         }
+
+       
     }
 
 
