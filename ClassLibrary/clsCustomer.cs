@@ -145,5 +145,10 @@ namespace ClassLibrary
             
             }
         }
+
+        public string Valid(string firstName, string lastName, string emailAddress, string dateOfBirth, string phoneNumber)
+        {
+            return "";
+        }
     }
 }
