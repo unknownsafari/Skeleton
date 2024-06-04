@@ -23,7 +23,8 @@
          <div>&nbsp;</div>
          <div>
              <asp:Label runat="server" Text="Enter the Publisher" ID="lblEnterPublisher"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             <asp:TextBox runat="server" ID="txtPub"></asp:TextBox>&nbsp;</div>
+             <asp:TextBox runat="server" ID="txtPub"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <asp:Button runat="server" Text="Return to Main Menu" ID="btnReturntoMM" OnClick="btnReturntoMM_Click"></asp:Button></div>
          <div>&nbsp;</div>
          <div>
              <asp:Button runat="server" Text="Apply Filter" ID="btnApplyFilter" OnClick="btnApplyFilter_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

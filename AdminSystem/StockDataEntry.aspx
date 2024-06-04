@@ -39,7 +39,8 @@
        <div>&nbsp;</div>
        <div><div>&nbsp;<asp:Label runat="server" ID="lblError"></asp:Label></div>
        <div>&nbsp;</div>
-       <div>&nbsp; <asp:Button runat="server" Text="OK" ID="btnOK" OnClick="btnOK_Click" Width="50px"></asp:Button>                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                <asp:Button runat="server" Text="Cancel" ID="btnCancel"></asp:Button></div>
+       <div>&nbsp; <asp:Button runat="server" Text="OK" ID="btnOK" OnClick="btnOK_Click" Width="50px"></asp:Button>                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                <asp:Button runat="server" Text="Cancel" ID="btnCancel" OnClick="btnCancel_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <asp:Button runat="server" Text="Return to Main Menu" ID="btnReturnToMM" OnClick="btnReturnToMM_Click"></asp:Button></div>
        <div>&nbsp;</div>
        <div>&nbsp;</div>
        
