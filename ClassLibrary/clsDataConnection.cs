@@ -25,6 +25,10 @@ public class clsDataConnection
     DataTable dataTable = new DataTable();
     //string variable used to store the connection string
     private string connectionString;
+    public bool Find(int StaffNo)
+    {
+        return true;
+    }
 
     public clsDataConnection()
     {

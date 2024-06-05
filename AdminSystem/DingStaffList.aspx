@@ -8,7 +8,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div id="lstStaffList">
+            <asp:ListBox runat="server" OnSelectedIndexChanged="Unnamed1_SelectedIndexChanged" ID="lstStaffList"></asp:ListBox>
         </div>
     </form>
 </body>

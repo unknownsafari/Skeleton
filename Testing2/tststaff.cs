@@ -2,13 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Security.Policy;
 
 namespace Testing2
 {
     [TestClass]
     public class tststaff
     {
-        private bool OK;
+       
         string HouseNo = "12b";
         string Street = "some street";
         string Town = "Leicester";
@@ -113,7 +114,7 @@ namespace Testing2
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 5;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //test to see if the result is true
@@ -129,11 +130,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 5;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the Staff id property
-            if (AnStaff.StaffId != 21)
+            if (AnStaff.StaffId != 5)
             {
                 OK = false;
             }
@@ -150,11 +151,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 5;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the house no property
-            if (AnStaff.HouseNo != "123")
+            if (AnStaff.HouseNo != "72")
             {
                 OK = false;
             }
@@ -171,11 +172,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 3;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the street property
-            if (AnStaff.Street != "Test Street")
+            if (AnStaff.Street != "Kings Avenue")
             {
                 OK = false;
             }
@@ -192,11 +193,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 3;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the town property
-            if (AnStaff.Town != "Test Town")
+            if (AnStaff.Town != "Nuneaton")
             {
                 OK = false;
             }
@@ -213,11 +214,11 @@ namespace Testing2
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 5;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the post code property
-            if (AnStaff.PostCode != "XXX XXX")
+            if (AnStaff.PostCode != "NG1 7tw")
             {
                 OK = false;
             }
@@ -234,11 +235,11 @@ namespace Testing2
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 5;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the county code property
-            if (AnStaff.CountyCode != 1)
+            if (AnStaff.CountyCode != 30)
             {
                 OK = false;
             }
@@ -252,7 +253,7 @@ namespace Testing2
             String Error = "";
             string HouseNo = "";
             Error = Anstaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void HouseNoMin()

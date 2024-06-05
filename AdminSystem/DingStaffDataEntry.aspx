@@ -15,8 +15,8 @@
             <asp:TextBox ID="txtStaff" runat="server" style="z-index: 1; left: 96px; top: 7px; position: absolute"></asp:TextBox>
         </div>
         <asp:Label ID="lblHouseNo" runat="server" style="z-index: 1; left: 7px; top: 39px; position: absolute" Text="House NO" width="75px"></asp:Label>
-        <asp:TextBox ID="txtHouseNo" runat="server" style="z-index: 1; left: 98px; top: 34px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblPostCode" runat="server" Style="z-index: 1; left: 13px; top: 164px; position: absolute" Text="Post Code" Width="75px" Style="z-index: 1; left: 13px; top: 164px; position: absolute"></asp:Label>
+        <asp:TextBox ID="txtHouseNo" runat="server" style="z-index: 1; left: 98px; top: 34px; position: absolute" OnTextChanged="txtHouseNo_TextChanged"></asp:TextBox>
+        <asp:Label ID="lblPostCode" runat="server" style="z-index: 1; left: 13px; top: 164px; position: absolute" Text="Post Code" Width="75px"></asp:Label>
         <asp:Label ID="lblStreet" runat="server" style="z-index: 1; left: 13px; top: 63px; position: absolute" Text="Street" width="75px"></asp:Label>
         <asp:TextBox ID="txtStreet" runat="server" Style="z-index: 1; left: 100px; top: 64px; position: absolute" OnTextChanged="txtStreet_TextChanged"></asp:TextBox>
         <asp:Label ID="lblTown" runat="server" style="z-index: 1; left: 13px; top: 99px; position: absolute" Text="Town" width="75px"></asp:Label>

@@ -117,7 +117,7 @@ namespace ClassLibrary
         }
         //private data member for the active property
         private Boolean mActive;
-        private DateTime DateTemp;
+       
 
         //active public property
         public bool Active
@@ -143,11 +143,11 @@ namespace ClassLibrary
             {
                 //set the private data members to the test data value
                 mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
-                mHouseNo = Convert.ToString(DB.DataTable.Rows[0]["GouseNo"]); ;
+                mHouseNo = Convert.ToString(DB.DataTable.Rows[0]["HouseNo"]); ;
                 mStreet = Convert.ToString(DB.DataTable.Rows[0]["Street"]);
-                mTown = Convert.ToString(DB.DataTable.Rows[0]["StaffId"]);
+                mTown = Convert.ToString(DB.DataTable.Rows[0]["Town"]);
                 mPostCode = Convert.ToString (DB.DataTable.Rows[0]["Postcode"]);
-                mCountyCode = Convert.ToInt32 (DB.DataTable.Rows[0]["CountryCode"]);
+                mCountyCode = Convert.ToInt32 (DB.DataTable.Rows[0]["CountyCode"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 //always return true
@@ -158,19 +158,19 @@ namespace ClassLibrary
                 return false;
             }
         }
-        public string Valid(string HouseNo, string Street,string Town,string Postcode,string DateAdded)
+        public string Valid(string houseNo, string street,string town,string postcode,string dateAdded)
         {
             String Error = "";
             DateTime DateTemp;
-            if (HouseNo.Length == 0) 
+            if (houseNo.Length == 0) 
             {
                 Error = Error + "The house number not be blank:";
             }
-            if (HouseNo.Length>6)
+            if (houseNo.Length>6)
             {
                 Error = Error + "The house no must be less than 6 characters :";
             }
-            DateTemp = Convert.ToDateTime(DateAdded);
+            DateTemp = Convert.ToDateTime(dateAdded);
             if(DateTemp<DateTime.Now.Date)
             {
                 Error = Error + "The date cannot be in the past :";
@@ -184,7 +184,7 @@ namespace ClassLibrary
             try
             {
                 //copy the dateAdded value to the DateTemp variable
-                DateTemp = Convert.ToDateTime(DateAdded);
+                DateTemp = Convert.ToDateTime(dateAdded);
                 if (DateTemp < DateComp) //compare dateAdded with Date
                 {
                     //record the error
@@ -203,37 +203,37 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
             //is the post code blank
-            if (PostCode.Length == 0)
+            if (postcode.Length == 0)
             {
                 //record the error
                 Error = Error + "The post code may not be blank : ";
             }
             //if the post code is too long
-            if (PostCode.Length > 9)
+            if (postcode.Length > 9)
             {
                 //record the error
                 Error = Error + "The post code must be less than 9 characters : ";
             }
             //is the street blank
-            if (Street.Length == 0)
+            if (street.Length == 0)
             {
                 //record the error
                 Error = Error + "The street may not be blank : ";
             }
             //if the street is too long
-            if (Street.Length > 50)
+            if (street.Length > 50)
             {
                 //record the error
                 Error = Error + "The street must be less than 50 characters : ";
             }
             //is the town blank
-            if (Town.Length == 0)
+            if (town.Length == 0)
             {
                 //record the error
                 Error = Error + "The town may not be blank : ";
             }
             //if the town is too long
-            if (Town.Length > 50)
+            if (town.Length > 50)
             {
                 //record the error
                 Error = Error + "The town must be less than 50 characters : ";
