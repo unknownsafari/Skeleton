@@ -56,5 +56,15 @@ namespace ClassLibrary
 
            
         }
+
+        public int Add()
+        {
+            throw new NotImplementedException();
+        }
+        private class clsStaffcollection
+        {
+            List<clsStaff> mStaffList = new List<clsStaff>();
+            clsStaff mThisStaff = new clsStaff();
+        }
     }  
 }

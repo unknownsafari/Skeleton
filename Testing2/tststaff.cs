@@ -114,7 +114,7 @@ namespace Testing2
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 5;
+            Int32 StaffId = 3;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //test to see if the result is true
@@ -130,11 +130,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 5;
+            Int32 StaffId = 3;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the Staff id property
-            if (AnStaff.StaffId != 5)
+            if (AnStaff.StaffId != 3)
             {
                 OK = false;
             }
@@ -151,11 +151,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 5;
+            Int32 StaffId = 3;
             //invoke the method
             Found = AnStaff.Find(StaffId);
             //check the house no property
-            if (AnStaff.HouseNo != "72")
+            if (AnStaff.HouseNo != "2")
             {
                 OK = false;
             }
@@ -246,6 +246,7 @@ namespace Testing2
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+        //  p10 
         [TestMethod]
         public void HouseNoMinLessOne()
         {

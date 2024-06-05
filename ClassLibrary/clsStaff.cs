@@ -166,7 +166,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The house number not be blank:";
             }
-            if (houseNo.Length>6)
+            if (houseNo.Length>10)
             {
                 Error = Error + "The house no must be less than 6 characters :";
             }

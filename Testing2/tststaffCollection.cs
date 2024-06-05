@@ -69,6 +69,26 @@ namespace Testing2
             Assert.AreEqual(AllStaffs. Count, TestList.Count);
 
         }
-
+        //P13a
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.StaffId = 1;
+            TestItem.CountyCode = 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.HouseNo = "28";
+            TestItem.PostCode = "LE83RT";
+            TestItem.Street = "Ar Road";
+            TestItem.Town = "Leicester";
+            AllStaffs.ThisStaff = TestItem;
+            PrimaryKey = AllStaffs.Add();
+            TestItem.StaffId = PrimaryKey;
+            AllStaffs.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
+        }
     }
 }
