@@ -121,22 +121,23 @@ namespace ClassLibrary
                 mUnitPrice = value;
             }
         }
-        //private data member for the limited edition property
-        private string mLimitedEdition;
-        //limited edition public property
-        public string LimitedEdition
+        //private data member for the download only property
+        private bool mDownloadOnly;
+        //download only public property
+        public bool DownloadOnly
         {
             get
             {
                 //this line of code sends data out of the property
-                return mLimitedEdition;
+                return mDownloadOnly;
             }
             set
             {
                 //this line of code allows data into the property 
-                mLimitedEdition = value;
+                mDownloadOnly = value;
             }
         }
+
         /***************** FIND METHOD *********************/
 
         public bool Find(int ProductID)
@@ -158,8 +159,8 @@ namespace ClassLibrary
                 mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
                 mMinimumRecorderLEvel = Convert.ToInt32(DB.DataTable.Rows[0]["MinimumRecorderLEvel"]);
                 mUnitPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["UnitPrice"]);
-                //mLimitedEdition = Convert.ToString(DB.DataTable.Rows[0]["LimitedEdition"]);
-                //return that everything worked OK
+                mDownloadOnly = Convert.ToBoolean(DB.DataTable.Rows[0]["DownloadOnly"]);
+                //always return true;
                 return true;
             }
             // if no record was found 

@@ -21,6 +21,19 @@ namespace Testing5
         string MinimumRecorderLevel = 1500.ToString();
         string CurrentStockLevel = 2500.ToString();
         string UnitPrice = 8.99m.ToString();
+
+        [TestMethod]
+        public void DownloadOnlyOK()
+        {
+            //create an instance of the class we want to create 
+            clsStock AStock = new clsStock();
+            //create some test data to assign to the property 
+            Boolean TestData = true;
+            //assign the data to the property
+            AStock.DownloadOnly = TestData;
+            //test to see that the two values are the same 
+            Assert.AreEqual(AStock.DownloadOnly, TestData);
+        }
         [TestMethod]
         public void TestMethod1()
         {
@@ -248,6 +261,27 @@ namespace Testing5
             Found = AStock.Find(ProductId);
             //check the product id
             if (AStock.Platform != "PC")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDownloadOnlyFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ProductId = 23;
+            //invoke the method
+            Found = AStock.Find(ProductId);
+            //check the product id
+            if (AStock.DownloadOnly != true)
             {
                 OK = false;
             }

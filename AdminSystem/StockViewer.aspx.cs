@@ -29,6 +29,6 @@ public partial class _1Viewer : System.Web.UI.Page
         //display publisher for this entry
         Response.Write(AStock.Publisher);
         //yfy
-        Response.Write(AStock.LimitedEdition);
+        Response.Write(AStock.DownloadOnly);
     }
 }
