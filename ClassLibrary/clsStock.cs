@@ -199,6 +199,24 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The platform must be less than 20 characters :";
             }
+            //if the publisher is blank
+            if (publisher.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The publisher may not be blank :";
+            }
+            //if the publisher is greater than 20 characters
+            if (publisher.Length > 30)
+            {
+                //record the error 
+                Error = Error + "The publisher must be less than 20 characters :";
+            } 
+            //if the current stock level is blank
+            if (currentStockLevel.Length == 0)
+            {
+                //record the error
+                Error = Error + "Current Stock Level may not be blank :";
+            }
             //return any error messages
             return Error;
         }
