@@ -174,6 +174,10 @@ namespace ClassLibrary
 
         public string Valid(string productName, string minimumRecorderLevel, string unitPrice, string currentStockLevel, string platform, string publisher)
         {
+            //creating a datatype for parse
+            int currentStockLevelInt;
+            int minimumRecorderLevelInt;
+            decimal unitPriceDecimal;
             //create a string variable to store the error
             String Error = "";
             //if the ProductName is blank 
@@ -211,12 +215,69 @@ namespace ClassLibrary
             {
                 //record the error 
                 Error = Error + "The publisher must be less than 20 characters :";
-            } 
-            //if the current stock level is blank
-            if (currentStockLevel.Length == 0)
+            }
+            //if the current stock level is not int, less than zero and greater than 1000000
+            if (!int.TryParse(currentStockLevel, out currentStockLevelInt))
             {
                 //record the error
-                Error = Error + "Current Stock Level may not be blank :";
+                Error = Error + "Current Stock Level must be a number : ";
+            }
+            else
+            {
+                //add your existing validation for currentStockLevel here
+                if (currentStockLevelInt < 0)
+                {
+                    // record the error
+                    Error = Error + "Current Stock Level may not be blank : ";
+                }
+
+                if (currentStockLevelInt > 1000000)
+                {
+                    // record the error
+                    Error = Error + "Current stock level must be less than 1000000";
+                }
+            }
+            //if the minimum recorder level is not int, less than 40 and greater than 8000000
+            if (!int.TryParse(minimumRecorderLevel, out minimumRecorderLevelInt))
+            {
+                //record the error
+                Error = Error + "Minimum recorder Level must be a number : ";
+            }
+            else
+            {
+                //add your existing validation for currentStockLevel here
+                if (minimumRecorderLevelInt < 40)
+                {
+                    // record the error
+                    Error = Error + "Minimum recorder Level must not be less than 40 : ";
+                }
+
+                if (minimumRecorderLevelInt > 1000000)
+                {
+                    // record the error
+                    Error = Error + "Minimum recorder level must be less than 1000000";
+                }
+            }
+            //if the unit price is not decimal, less than 0 and greater than 100
+            if (decimal.TryParse(unitPrice, out unitPriceDecimal))
+            {
+                if (unitPriceDecimal <= 0)
+                {
+                    // record the error
+                    Error = Error + "Unit Price must be greater than zero : ";
+                }
+
+                // Assuming 100.00 is the maximum unit price
+                if (unitPriceDecimal > 100.00m)
+                {
+                    // record the error
+                    Error = Error + "Unit Price must be less than or equal to 100.00";
+                }
+            }
+            else
+            {
+                // record the error
+                Error = Error + "Unit Price must be a decimal number";
             }
             //return any error messages
             return Error;

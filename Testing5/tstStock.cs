@@ -635,7 +635,7 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Publisher = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+            string Publisher = "";
             Publisher = Publisher.PadRight(31, 'b'); //this should fail
             //invoke the method
             Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
@@ -652,6 +652,394 @@ namespace Testing5
             //create some test data to pass to the method
             string Publisher = "";
             Publisher = Publisher.PadRight(500, 'b'); //this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            string Error = ""; //this should trigger an error 
+            //invoke the method 
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 0; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 1; //this should be ok
+            //invoke the method     
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 999999; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 1000000; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 500000; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 1000001;//this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 CurrentStockLevel = 100000000; //this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel.ToString(), Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CurrentStockLevelInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string CurrentStockLevel = "Not an Integer";//this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            string Error = ""; //this should trigger an error 
+            //invoke the method 
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 0; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 40; //this should be ok
+            //invoke the method     
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 799999; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 800000; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 400000; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 800001;//this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Int32 MinimumRecorderLevel = 100000000; //this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel.ToString(), UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MinimumRecorderLevelInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string MinimumRecorderLevel = "Candy";//this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method 
+            decimal UnitPrice = 0.99m; //this should be ok
+            //invoke the method 
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceExtremeMinLessOne()
+        {
+            //create an instance of the class we want to create 
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            string Error = "";
+            //create some test data to pass to the method 
+            decimal UnitPrice = 0.01m; //this should be ok
+            //invoke the method 
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMin()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 1.00m; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Decimal UnitPrice = 1.01m; //this should be ok
+            //invoke the method     
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 99.99m; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 100.00m; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMid()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 50.00m; //this should be ok
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 101.00m;//this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            decimal UnitPrice = 999999999999.99m; //this should fail
+            //invoke the method
+            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice.ToString(), CurrentStockLevel, Platform, Publisher);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void UnitPriceInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string UnitPrice = "not a decimal";//this should fail
             //invoke the method
             Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
             //test to see that the result is correct

@@ -146,7 +146,7 @@ namespace Testing5
             TestItem.Publisher = "Rock Studios";
             TestItem.Platform = "XBOX";
             TestItem.MinimumRecorderLEvel = 500;
-           // TestItem.DownloadOnly = true;
+            TestItem.DownloadOnly = true;
             //set the record based on the new test data
             AllStock.ThisStock = TestItem;
             //update the record
