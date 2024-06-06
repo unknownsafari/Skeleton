@@ -33,9 +33,9 @@ namespace Testing4
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            TheCustomer.Newsletter = TestData;
+            TheCustomer.NewsletterSubscription = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(TheCustomer.Newsletter, TestData);
+            Assert.AreEqual(TheCustomer.NewsletterSubscription, TestData);
         }
 
         [TestMethod]
@@ -211,7 +211,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 CustomerId = 2;
             Found= TheCustomer.Find(CustomerId);
-            if (TheCustomer.Newsletter != false)
+            if (TheCustomer.NewsletterSubscription != false)
             {
                 OK = false;
 

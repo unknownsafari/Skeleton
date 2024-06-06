@@ -20,7 +20,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(TheCustomer.EmailAddress);
         Response.Write(TheCustomer.PhoneNumber);
         Response.Write(TheCustomer.DateOfBirth);
-        Response.Write(TheCustomer.Newsletter);
+        Response.Write(TheCustomer.NewsletterSubscription);
         
 
     }
