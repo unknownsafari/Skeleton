@@ -26,6 +26,7 @@
             <asp:TextBox ID="txtTown" runat="server" Style="z-index: 1; left: 100px; top: 100px; position: absolute" OnTextChanged="txtTown_TextChanged"></asp:TextBox>
         </p>
         <asp:TextBox ID="txtCounty" runat="server" style="z-index: 1; left: 100px; top: 134px; position: absolute"></asp:TextBox>
+        <asp:Button ID="btnReturntoMainMenu" runat="server" OnClick="btnReturntoMainMenu_Click" style="z-index: 1; left: 323px; top: 105px; position: absolute" Text="ReturntoMainMenu" />
         <p>
             <asp:TextBox ID="txtPS" runat="server" style="z-index: 1; left: 103px; top: 167px; position: absolute"></asp:TextBox>
         </p>

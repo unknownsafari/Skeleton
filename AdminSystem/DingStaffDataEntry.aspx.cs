@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (StaffId == 0)
+            StaffId = -1;
+        if (IsPostBack == false)
+        {
+            if (StaffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
 
+    }
+
+     void DisplayStaff()
+    {
+       clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ThisStaff.Find(StaffId);
+        /*clsStaff staff = new clsStaff();
+        staff.Find(StaffId);
+        StaffBook.ThisStaff=staff;*/
+        txtStaff.Text = StaffBook.ThisStaff.StaffId.ToString();
+        txtHouseNo.Text = StaffBook.ThisStaff.HouseNo.ToString();
+        txtStreet.Text = StaffBook.ThisStaff.Street.ToString();
+        txtTown.Text = StaffBook.ThisStaff.Town.ToString();
+        txtPS.Text = StaffBook.ThisStaff.PostCode.ToString();
+        txtDate.Text = StaffBook.ThisStaff.DateAdded.ToString();
+        chkActive.Checked = StaffBook.ThisStaff.Active;
+        txtCounty.Text = StaffBook.ThisStaff.CountyCode.ToString();
     }
 
     protected void TextBox2_TextChanged(object sender, EventArgs e)
@@ -33,13 +61,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStaff.Valid(HouseNo, Street, Town, PostCode, DateAdded);
         if (Error == "")
         {
+            AnStaff.StaffId = StaffId;
             AnStaff.HouseNo = HouseNo;
             AnStaff.Street = Street;
             AnStaff.Town = Town;
             AnStaff.PostCode = PostCode;
+            AnStaff.CountyCode = Convert.ToInt32(CountyCode);
             AnStaff.DateAdded = Convert.ToDateTime(DateAdded);
+            AnStaff.Active = chkActive.Checked;
+            clsStaffCollection Stafflist = new clsStaffCollection();
+            if(StaffId == -1)
+            {
+                Stafflist.ThisStaff = AnStaff;
+                Stafflist.Add();
+
+            }
+            else
+            {
+                Stafflist.ThisStaff.Find(StaffId);
+                Stafflist.ThisStaff = AnStaff;
+                Stafflist.Update();
+            }
             Session["Anaddress"] = AnStaff;
-            Response.Redirect("StaffBookViewer.aspx");
+            Response.Redirect("DingStaffViewer.aspx");
         }
         else 
         {
@@ -92,6 +136,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        Response.Redirect("DingStaffTeamMainMenu.aspx");
+    }
 
+    protected void btnReturntoMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("DingStaffTeamMainMenu.aspx");
     }
 }

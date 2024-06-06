@@ -90,5 +90,57 @@ namespace Testing2
             AllStaffs.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
         }
+        //13b
+        [TestMethod]
+        public void UpdateMthodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimartKey = 0;
+            TestItem.Active = true;
+            TestItem.CountyCode= 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.HouseNo = "21b";
+            TestItem.PostCode = "LE1 4AB";
+            TestItem.Street = "Some Street";
+            TestItem.Town = "Leicester";
+            AllStaffs.ThisStaff = TestItem;
+            PrimartKey = AllStaffs.Add();
+            TestItem.StaffId= PrimartKey;
+            TestItem.Active = false;
+            TestItem.CountyCode= 3;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.HouseNo = "123b";
+            TestItem.PostCode = "LE2 7DN";
+            TestItem.Street = "some Street";
+            TestItem.Town = "Liverpool";
+            AllStaffs.ThisStaff = TestItem;
+            AllStaffs.Update();
+            AllStaffs.ThisStaff.Find(PrimartKey);
+            Assert.AreEqual(AllStaffs.ThisStaff, TestItem);
+        }
+        //14a
+        [TestMethod]
+        public void DeleteMthodOK()
+        {
+            clsStaffCollection AllStaffs = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimartKey = 0;
+            TestItem.Active = true;
+            TestItem.CountyCode = 1;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.HouseNo = "21b";
+            TestItem.PostCode = "LE1 4AB";
+            TestItem.Street = "Some Street";
+            TestItem.Town = "Leicester";
+            AllStaffs.ThisStaff = TestItem;
+            PrimartKey = AllStaffs.Add();
+            TestItem.StaffId = PrimartKey;
+            AllStaffs.ThisStaff.Find(PrimartKey);
+            AllStaffs.Delete();
+            Boolean Found = AllStaffs.ThisStaff.Find(PrimartKey);
+            Assert.IsFalse(Found);
+        }
+
     }
 }
