@@ -94,7 +94,7 @@ namespace ClassLibrary
 
         private Boolean mNewsletter;
 
-        public bool Newsletter
+        public bool NewsletterSubscription
         {
             get
             {

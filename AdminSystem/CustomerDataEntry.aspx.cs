@@ -88,7 +88,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtEmailAddress.Text = TheCustomer.EmailAddress;
                 txtDateOfBirth.Text = TheCustomer.DateOfBirth.ToString();
                 txtPhoneNumber.Text = TheCustomer.PhoneNumber.ToString();
-                chkNewsletter.Checked = TheCustomer.Newsletter;
+                chkNewsletter.Checked = TheCustomer.NewsletterSubscription;
             }
             else
             {
