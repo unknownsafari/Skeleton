@@ -17,21 +17,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsCustomer
         clsCustomer TheCustomer = new clsCustomer();
         //capture the Data entered by the customer 
-        TheCustomer.FirstName = txtFirstName.Text;
-        TheCustomer.LastName = txtLastName.Text;
-        TheCustomer.EmailAddress = txtEmailAddress.Text;
-        TheCustomer.Newsletter = chkNewsletter.Checked;
-        long phoneNumber;
-        if (long.TryParse(txtPhoneNumber.Text, out phoneNumber))
-        {
-            TheCustomer.PhoneNumber = txtPhoneNumber.Text;
-        }
-        else
-        {
-            lblError.Text = "Invalid phone number. Please enter numbers only.";
-            lblError.Visible = true;
-            return;
-        }
+        string FirstName = txtFirstName.Text;
+        string LastName = txtLastName.Text;
+        string EmailAddress = txtEmailAddress.Text;
+        string Newsletter = chkNewsletter.Text;
+        string PhoneNumber = txtPhoneNumber.Text;
+
+        
+
+        TheCustomer.PhoneNumber = PhoneNumber;
         DateTime dateOfBirth;
 
         // Attempt to parse the date of birth
@@ -43,13 +37,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Session["TheCustomer"] = TheCustomer;
 
             // Navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            
         }
         else
         {
             // Display an error message if the date is not valid
             lblError.Text = "Invalid date format. Please enter the date in yyyy-mm-dd format.";
             lblError.Visible = true;
+        }
+        string Error = "";
+        Error = TheCustomer.Valid(FirstName, LastName, EmailAddress, Newsletter, PhoneNumber);
+        if (Error == "")
+        {
+            //capture the first name
+            TheCustomer.FirstName = FirstName;
+            TheCustomer.LastName = LastName;
+            TheCustomer.EmailAddress = EmailAddress;
+            TheCustomer.PhoneNumber = PhoneNumber;
+            Session["TheCustomer"] = TheCustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
         }
     }
 
