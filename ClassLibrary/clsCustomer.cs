@@ -148,7 +148,62 @@ namespace ClassLibrary
 
         public string Valid(string firstName, string lastName, string emailAddress, string dateOfBirth, string phoneNumber)
         {
-            return "";
+            // Create a string variable to store the error
+            String Error = "";
+            // If the First name is blank
+            if (firstName.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The first name cannot be blank: ";
+            }
+            //if the first name is greater than 51 charecters
+            if (firstName.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The First name must be less than 50 character : ";
+            }
+
+            // Create a string variable to store the error
+            
+            // If the First name is blank
+            if (lastName.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The Last name cannot be blank: ";
+            }
+            //if the first name is greater than 51 charecters
+            if (lastName.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Last name must be less than 50 character : ";
+            }
+
+
+            // If the First name is blank
+            if (emailAddress.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The Email Address cannot be blank: ";
+            }
+            //if the first name is greater than 51 charecters
+            if (emailAddress.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The Email Address must be less than 50 character : ";
+            }
+
+            if (phoneNumber.Length == 0)
+            {
+                // Record the error
+                Error = Error + "The Phone Number cannot be blank: ";
+            }
+            //if the first name is greater than 51 charecters
+            if (phoneNumber.Length > 8)
+            {
+                //record the error 
+                Error = Error + "The Phone Number must be less than 8 character : ";
+            }
+            return Error;
         }
     }
 }
