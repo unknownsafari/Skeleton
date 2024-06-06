@@ -40,6 +40,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtPublisher.Text = Stock.ThisStock.Publisher.ToString();
         txtProductName.Text = Stock.ThisStock.ProductName.ToString();
         txtUnitPrice.Text = Stock.ThisStock.UnitPrice.ToString();
+        chkActive.Checked = Stock.ThisStock.DownloadOnly;
     }
 
     protected void Unnamed1_TextChanged(object sender, EventArgs e)
@@ -69,7 +70,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the current stock level
         string CurrentStockLevel = txtCurrentStockLevel.Text;
          //capture limited edition checkbox
-        string LimitedEdition = chkActive.Text;
+        string DownloadOnly = chkActive.Text;
         //variable to store any error message 
         string Error = "";
         //validate the data 
@@ -90,8 +91,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.Platform = Platform;
             //add publisher of the product
             AStock.Publisher = Publisher;
-            //capture Limited edition check box
-            AStock.LimitedEdition = chkActive.Checked ? "Yes" : "No";
+            //capture download only check
+            AStock.DownloadOnly = chkActive.Checked;
             //create a new instance of the address collection 
             clsStockCollection StockList = new clsStockCollection();
 
@@ -146,6 +147,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtPublisher.Text = AStock.Publisher;
             txtProductName.Text = AStock.ProductName;
             txtUnitPrice.Text = AStock.UnitPrice.ToString();
+            chkActive.Checked = AStock.DownloadOnly;
         }
     }
 
@@ -164,5 +166,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //redirect to the main menu 
         Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void chkActive_CheckedChanged(object sender, EventArgs e)
+    {
+
     }
 }
