@@ -126,9 +126,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 2;
+            Int32 CustomerId = 5;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.DateOfBirth != Convert.ToDateTime("09/03/1999"))
+            if (TheCustomer.DateOfBirth != Convert.ToDateTime("2002/11/15"))
             {
                 OK = false;
             }
@@ -142,9 +142,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 2;
+            Int32 CustomerId = 5;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.FirstName != "Matthew")
+            if (TheCustomer.FirstName != "Nikesh")
             {
                 OK = false;
 
@@ -159,9 +159,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 2;
+            Int32 CustomerId = 5;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.LastName != "Jeffery")
+            if (TheCustomer.LastName != "Kumar")
             {
                 OK = false;
 
@@ -176,9 +176,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 2;
+            Int32 CustomerId = 5;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.EmailAddress != "MatthewJef1558@gmail.com")
+            if (TheCustomer.EmailAddress != "NikeshKumar@gmail.com")
             {
                 OK = false;
 
@@ -193,9 +193,9 @@ namespace Testing4
             clsCustomer TheCustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 2;
+            Int32 CustomerId = 5;
             Found = TheCustomer.Find(CustomerId);
-            if (TheCustomer.PhoneNumber != "66666666")
+            if (TheCustomer.PhoneNumber != "55555555")
             {
                 OK = false;
 
