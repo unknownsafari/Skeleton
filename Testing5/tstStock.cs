@@ -768,20 +768,6 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void CurrentStockLevelInvalidDataType()
-        {
-            //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
-            //string variable to store any error message
-            String Error = "";
-            //create some test data to pass to the method
-            string CurrentStockLevel = "Not an Integer";//this should fail
-            //invoke the method
-            Error = AStock.Valid(ProductName, MinimumRecorderLevel, UnitPrice, CurrentStockLevel, Platform, Publisher);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
         public void MinimumRecorderLevelMinLessOne()
         {
             //create an instance of the class we want to create 

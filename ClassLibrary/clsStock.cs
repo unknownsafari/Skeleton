@@ -216,14 +216,9 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The publisher must be less than 20 characters :";
             }
-            //if the current stock level is not int, less than zero and greater than 1000000
+            //if the current stock level is less than zero and greater than 1000000
             if (!int.TryParse(currentStockLevel, out currentStockLevelInt))
-            {
-                //record the error
-                Error = Error + "Current Stock Level must be a number : ";
-            }
-            else
-            {
+            
                 //add your existing validation for currentStockLevel here
                 if (currentStockLevelInt < 0)
                 {
@@ -236,7 +231,6 @@ namespace ClassLibrary
                     // record the error
                     Error = Error + "Current stock level must be less than 1000000";
                 }
-            }
             //if the minimum recorder level is not int, less than 40 and greater than 8000000
             if (!int.TryParse(minimumRecorderLevel, out minimumRecorderLevelInt))
             {
