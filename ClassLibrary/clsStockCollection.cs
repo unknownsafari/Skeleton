@@ -85,7 +85,7 @@ namespace ClassLibrary
                 AStock.UnitPrice = Convert.ToDecimal(DB.DataTable.Rows[Index]["UnitPrice"]);
                 AStock.CurrentStockLevel = Convert.ToInt32(DB.DataTable.Rows[Index]["CurrentStockLevel"]);
                 AStock.MinimumRecorderLEvel = Convert.ToInt32(DB.DataTable.Rows[Index]["MinimumRecorderLEvel"]);
-                // AStock.LimitedEdition = Convert.ToString(DB.DataTable.Rows[Index]["LimitedEdition"]);
+                AStock.DownloadOnly = Convert.ToBoolean(DB.DataTable.Rows[Index]["DownloadOnly"]);
                 //add the record to the privare data member
                 mStockList.Add(AStock);
                 //point at the next record
@@ -105,6 +105,7 @@ namespace ClassLibrary
             DB.AddParameter("@MinimumRecorderLEvel", mThisStock.MinimumRecorderLEvel);
             DB.AddParameter("@Platform", mThisStock.Platform);
             DB.AddParameter("@Publisher", mThisStock.Publisher);
+            DB.AddParameter("@DownloadOnly", mThisStock.DownloadOnly);
 
             //execute the query returning the primary key value 
             return DB.Execute("sproc_tblStock_Insert");
@@ -123,6 +124,7 @@ namespace ClassLibrary
             DB.AddParameter("@MinimumRecorderLEvel", mThisStock.MinimumRecorderLEvel);
             DB.AddParameter("@Platform", mThisStock.Platform);
             DB.AddParameter("@Publisher", mThisStock.Publisher);
+            DB.AddParameter("@DownloadOnly", mThisStock.DownloadOnly);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
         }

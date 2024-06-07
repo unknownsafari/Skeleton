@@ -34,7 +34,7 @@ namespace Testing5
             TestItem.Publisher = "Mojang Studios";
             TestItem.Platform = "PC";
             TestItem.MinimumRecorderLEvel = 1500;
-            TestItem.LimitedEdition = "Yes";
+            //TestItem.DownloadOnly = true;
             //add the item to the test list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -56,7 +56,7 @@ namespace Testing5
             TestStock.Publisher = "Mojang Studios";
             TestStock.Platform = "PC";
             TestStock.MinimumRecorderLEvel = 1500;
-            TestStock.LimitedEdition = "Yes";
+            //TestStock.DownloadOnly = true;
             //assign the data to the property 
             AllStock.ThisStock = TestStock;
             //test to see that the two values are the same
@@ -80,7 +80,7 @@ namespace Testing5
             TestItem.Publisher = "Mojang Studios";
             TestItem.Platform = "PC";
             TestItem.MinimumRecorderLEvel = 1500;
-            TestItem.LimitedEdition = "Yes";
+            //TestItem.DownloadOnly = true;
             //add the item to the test list
             TestList.Add(TestItem);
             //assign the data to the property
@@ -104,7 +104,7 @@ namespace Testing5
             TestItem.Publisher = "Mojang Studios";
             TestItem.Platform = "PC";
             TestItem.MinimumRecorderLEvel = 1500;
-            TestItem.LimitedEdition = "Yes";
+            TestItem.DownloadOnly = true;
             //set ThisStock to the test data
             AllStock.ThisStock = TestItem;
             //add the record
@@ -132,7 +132,7 @@ namespace Testing5
             TestItem.Publisher = "Mojang Studios";
             TestItem.Platform = "PC";
             TestItem.MinimumRecorderLEvel = 1500;
-            TestItem.LimitedEdition = "Yes";
+            TestItem.DownloadOnly = true;
             //set ThisStock to the test data
             AllStock.ThisStock = TestItem;
             //add the record
@@ -146,7 +146,7 @@ namespace Testing5
             TestItem.Publisher = "Rock Studios";
             TestItem.Platform = "XBOX";
             TestItem.MinimumRecorderLEvel = 500;
-            TestItem.LimitedEdition = "No";
+            TestItem.DownloadOnly = true;
             //set the record based on the new test data
             AllStock.ThisStock = TestItem;
             //update the record
@@ -173,7 +173,7 @@ namespace Testing5
             TestItem.Publisher = "Mojang Studios";
             TestItem.Platform = "PC";
             TestItem.MinimumRecorderLEvel = 1500;
-            TestItem.LimitedEdition = "Yes";
+            TestItem.DownloadOnly = true;
             //set ThisStock to the test data
             AllStock.ThisStock = TestItem;
             //add the record 

@@ -34,8 +34,9 @@
        <div>&nbsp;</div>
        <div>
            <asp:Label runat="server" Text="Publisher" ID="lblPublisher" width="210px"></asp:Label>&nbsp;<asp:TextBox runat="server" ID="txtPublisher" width="196px" height="29px"></asp:TextBox></div>
+  
        <div>&nbsp;</div>
-       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:CheckBox runat="server" ID="chkActive" Text="Limited Edition"></asp:CheckBox></div>
+       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:CheckBox runat="server" ID="chkActive" Text="Download Only" OnCheckedChanged="chkActive_CheckedChanged"></asp:CheckBox></div>
        <div>&nbsp;</div>
        <div><div>&nbsp;<asp:Label runat="server" ID="lblError"></asp:Label></div>
        <div>&nbsp;</div>
