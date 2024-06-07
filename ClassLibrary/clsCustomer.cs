@@ -151,7 +151,7 @@ namespace ClassLibrary
             // Create a string variable to store the error
             String Error = "";
             //create a temporary variable to store the date value
-            DateTime DateTemp;
+           
             // If the First name is blank
             if (firstName.Length == 0)
             {
