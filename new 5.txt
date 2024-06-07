@@ -1,0 +1,180 @@
+    // Try to convert the text to DateTime for ShippingDate and ActualDeliveryDate
+    if (DateTime.TryParse(txtShippingDateId.Text, out ShippingDate) &&
+        DateTime.TryParse(txtActualDeliveryDateId.Text, out ActualDeliveryDate))
+    {
+        AnShipping.ShippingDate = ShippingDate;
+        AnShipping.ActualDeliveryDate = ActualDeliveryDate;
+    }
+    else
+    {
+        // Ensure lblError is not null
+        if (lblError == null)
+        {
+            throw new InvalidOperationException("lblError control is not found.");
+        }
+
+        // Handle the case when the date conversion fails
+        lblError.Text = "Please enter valid dates for Shipping Date and Actual Delivery Date.";
+        return; // Exit the method if the date conversion fails
+    }
+
+    // Try to convert the text to bool for Delivered
+    if (bool.TryParse(chkActive.Text, out Delivered))
+    {
+        AnShipping.Delivered = Delivered;
+    }
+    else
+    {
+        // Ensure lblError is not null
+        if (lblError == null)
+        {
+            throw new InvalidOperationException("lblError control is not found.");
+        }
+
+        // Handle the case when the conversion fails
+        lblError.Text = "Please enter a valid value for Delivered.";
+        return; // Exit the method if the conversion fails
+    }
+
+    // Capture the current date and time
+    AnShipping.DateAdded = DateTime.Now;
+    // Capture Active check box
+    AnShipping.Active = chkActive.Checked;
+
+    // Store the shipping object in the session object
+    Session["AnShipping"] = AnShipping;
+
+    // Navigate to the view page 
+    Response.Redirect("ShippingViewer.aspx");
+}
+else
+{
+    // Ensure lblError is not null
+    if (lblError == null)
+    {
+        throw new InvalidOperationException("lblError control is not found.");
+    }
+
+    // Handle the case when the conversion fails
+    lblError.Text = "Please enter valid Order ID and Carrier ID.";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________
+   protected void btnOK_Click(object sender, EventArgs e)
+   {
+       
+
+       // Create a new instance of clsShipping
+       clsShipment AnShipping = new clsShipment();
+       string OrderId = txtOrderId.Text;
+       string Carrier = txtCarrierId.Text;
+       string TrackingNumberId = txtTrackingNumberId.Text;
+       string ShippingDate = txtShippingDateId.Text;
+       string ActualdeliveryDate = txtActualDeliveryDateId.Text;
+       string Active = chkActive.Text;
+       string Error = "";
+       Error = AnShipping.Valid (OrderId, Carrier, TrackingNumberId, ShippingDate, ActualDeliveryDate);
+       if (Error == "")
+
+
+       // Variables to store the converted Order ID, Carrier ID, Tracking Number ID, and Date values
+       //int OrderId;
+       //string CarrierId;
+       String TrackingNumberId = txtTrackingNumberId.Text; // Assign the value from the text box
+       DateTime ShippingDate;
+       DateTime ActualDeliveryDate;
+       bool Delivered;
+
+       // Try to convert the text to integers
+       if (int.TryParse(txtOrderId.Text, out OrderId) && txtCarrierId.Text != null)
+       {
+           // If conversion is successful, assign to OrderId, Carrier, TrackingNo
+           AnShipping.OrderId = OrderId;
+           AnShipping.Carrier = txtCarrierId.Text;
+           AnShipping.TrackingNo = TrackingNumberId;
+
+           Session["AnShippingViewer.aspx"] = AnShipping;
+           Response.Redirect("ShippingViewer.aspx");
+         
+       }
+   }
+
+
+
+
+________________________________________________________________________________________
+[TestMethod]
+
+public void CountPropertyOk()
+{
+    //create an instance of the class we want to create
+    ClsShippingCollection AllShipping = new ClsShippingCollection();
+    //create some test data to assign to the property
+    Int32 SomeCount = 2;
+    //assign the data to the property
+    AllShipping.Count = SomeCount;
+    //test to see that two value are the same
+    Assert.AreEqual(AllShipping. Count, SomeCount);
+}
+__________________________________________________________________________________
+  public clsShipment ThisShipping { get; set; }
+  //constructor for the class
+  /* public void clsShippingCollection()
+
+   {
+       //create the items of the test data
+       clsShipment TestItem = new clsShipment();
+       //set its properties
+       TestItem.Active = true;
+       TestItem.OrderId = 1;
+       TestItem.Carrier = "dpd";
+       TestItem.TrackingNumber = "123";
+       TestItem.ShippingDate = DateTime.Now;
+       TestItem.ActualDeliveryDate = DateTime.Now;
+       //add the test item to the test list
+       mShippingList.Add(TestItem);
+       //re initialise the object for some new data
+       TestItem = new clsShipment();
+       //set its properties
+       TestItem.OrderId = 2;
+       TestItem.Carrier = "ups";
+       TestItem.TrackingNumber = "4232323";
+       TestItem.ShippingDate = DateTime.Now;
+       TestItem.ActualDeliveryDate = DateTime.Now;
+       //add the item to the list
+       mShippingList.Add(TestItem);
+   }*/
